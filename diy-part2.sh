@@ -23,10 +23,11 @@ git clone https://github.com/coLATin/argon-mod package/argon-mod
 
 # 删除自定义源默认的 argon 主题
 rm -rf package/lean/luci-theme-argon
+rm -rf package/lean/luci-theme-bootstrap
 
 # 替换默认主题为 luci-theme-darkmatter
 # sed -i 's/更改前的信息/更改后的信息/g' ./要修改的文件的目录（可以用本地查看）
-sed -i 's/luci-theme-neobird/luci-theme-darkmatter/g' feeds/luci/collections/luci/Makefile
+sed -i 's/luci-theme-bootstrap/luci-theme-darkmatter/g' feeds/luci/collections/luci/Makefile
 
 #开启MU-MIMO
 sed -i 's/mu_beamformer=0/mu_beamformer=1/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
