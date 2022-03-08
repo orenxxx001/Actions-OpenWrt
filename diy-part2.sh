@@ -18,24 +18,28 @@ sed -i 's/OpenWrt /Build $(TZ=UTC-8 date "+%Y.%m.%d") @ XinV-2.0 /g' package/lea
 sed -i '/uci commit system/i\uci set system.@system[0].hostname='XinV-2.0'' package/lean/default-settings/files/zzz-default-settings
 
 # 拉取 darkmatter/luci-theme-jj 原作者的源码，放到 package 目录下，编译时会自动遍历
-git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly
+git clone https://https://github.com/jerryc127/hexo-theme-butterfly package/lean/butterfly
 
 # 删除自定义源默认的 argon、bootstrap 主题
 rm -rf package/lean/luci-theme-argon
 rm -rf package/lean/luci-theme-bootstrap
 
+# 取消bootstrap为默认主题：
+sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
+
 # 替换默认主题为 luci-theme-darkmatter
 # sed -i 's/更改前的信息/更改后的信息/g' ./要修改的文件的目录（可以用本地查看）
 sed -i 's/luci-theme-bootstrap/luci-theme-darkmatter/g' feeds/luci/collections/luci/Makefile
+sed -i 's/luci-theme-neobird/luci-theme-darkmatter/g' feeds/luci/collections/luci/Makefile
 
 # 修改默认wifi名称Sid为RR
-sed -i 's/openWrt/RR/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/OpenWrt/RR/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 #wifi加密方式，没有是none
-sed -i 's/none/psk2/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/none/psk/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 #wifi密码
-sed -i 's/password/23456789DDop/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/12345678/23456789DDop#@!/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 # 删除软件包
 rm -rf package/lean/luci-theme-argon
