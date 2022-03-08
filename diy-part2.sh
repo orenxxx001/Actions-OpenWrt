@@ -32,14 +32,5 @@ sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/theme
 sed -i 's/luci-theme-bootstrap/luci-theme-darkmatter/g' feeds/luci/collections/luci/Makefile
 sed -i 's/luci-theme-neobird/luci-theme-darkmatter/g' feeds/luci/collections/luci/Makefile
 
-# 修改默认wifi名称Sid为RR
-sed -i 's/OpenWrt/RR/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-
-#wifi加密方式，没有是none
-sed -i 's/none/psk/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-
-#wifi密码
-sed -i 's/12345678/23456789DDop#@!/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-
 # 删除软件包
 rm -rf package/lean/luci-theme-argon
