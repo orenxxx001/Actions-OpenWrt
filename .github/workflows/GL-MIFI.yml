@@ -72,7 +72,7 @@ jobs:
       run: cd openwrt && ./scripts/feeds update -a
       
     - name: 玄学re-run数据源
-      run: ./scripts/feeds update -a
+      run: cd openwrt && ./scripts/feeds update -a
       
     - name: 安装数据源
       run: cd openwrt && ./scripts/feeds install -a
