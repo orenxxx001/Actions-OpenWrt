@@ -18,6 +18,9 @@ sed -i '/set system.@system[-1].hostname='OpenWrt'/i\set system.@system[-1].host
 rm -rf package/lean/luci-theme-argon
 rm -rf package/lean/luci-theme-bootstrap
 
+# 添加主题
+git clone darkmatter git://github.com/apollo-ng/luci-theme-darkmatter.git package/lean/luci-theme-darkmatter
+
 # 替换默认主题为 luci-theme-darkmatter
 # sed -i 's/更改前的信息/更改后的信息/g' ./要修改的文件的目录（可以用本地查看）
 sed -i 's/luci-theme-bootstrap/luci-theme-darkmatter/g' feeds/luci/collections/luci/Makefile
