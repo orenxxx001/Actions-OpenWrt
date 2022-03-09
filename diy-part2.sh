@@ -32,3 +32,12 @@ sed -i 's/luci-theme-neobird/luci-theme-darkmatter/g' feeds/luci/collections/luc
 # 取消bootstrap为默认主题：
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/neobird/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-neobird
+
+
+sed -i 'exit./d' >>./package/lean/default-settings/files/zzz-default-settings
+echo 'sed -i "s/WPAPSK1=.*/WPAPSK1=23456789DDop/g" /etc/wireless/mt7615/mt7615.1.dat'  >>./package/lean/default-settings/files/zzz-default-settings
+echo 'sed -i "s/WPAPSK1=.*/WPAPSK1=23456789DDop/g" /etc/wireless/mt7615/mt7615.2.dat'  >>./package/lean/default-settings/files/zzz-default-settings
+echo 'sed -i 's/SSID1=.*/SSID1=RR-2G/g' /etc/wireless/mt7615/mt7615.1.dat'   >>./package/lean/default-settings/files/zzz-default-settings
+echo 'sed -i 's/SSID1=.*/SSID1=RR-5G/g' /etc/wireless/mt7615/mt7615.2.dat'  >>./package/lean/default-settings/files/zzz-default-settings
+echo 'exit ' >>./package/lean/default-settings/files/zzz-default-settings
+
