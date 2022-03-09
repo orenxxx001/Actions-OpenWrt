@@ -74,12 +74,6 @@ jobs:
     - name: 安装数据源
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: 载入定义配置 - wifi
-      env:
-        WIFI_FILE: 'mac80211.sh'
-      run: |
-        [ -e $WIFI_FILE ] && mv $WIFI_FILE openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
-        
     - name: 载入定义配置（diy-part2）
       run: |
         [ -e files ] && mv files openwrt/files
