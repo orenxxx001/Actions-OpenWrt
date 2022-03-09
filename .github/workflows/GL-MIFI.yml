@@ -67,7 +67,10 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
-
+        
+    - name: 移除旧数据源
+      run: mv feeds.conf feeds.conf.old
+      
     - name: 升级数据源
       run: cd openwrt && ./scripts/feeds update -a
 
