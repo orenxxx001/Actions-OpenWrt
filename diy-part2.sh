@@ -4,6 +4,16 @@
 # File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #============================================================
+wifi_name='RR'
+wifi_encryption='psk2'
+wifi_password='23456789DDop'
+
+echo "修改wifi名称"
+sed -i "s/OpenWrt/$wifi_name/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
+echo "修改wifi加密方式"
+sed -i "s/none/$wifi_encryption/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
+echo "修改wifi加密密码"
+sed -i '/set wireless.default_radio${devidx}.encryption=none/aset wireless.default_radio${devidx}.key=$wifi_password' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 # 更改默认密码
 sed -i 's/root::0:0:99999:7:::/root:$1$MhPcOOTE$DOOyDUwKjP9xnoSfaczsk.:19058:0:99999:7:::/g' package/base-files/files/etc/shadow
@@ -32,12 +42,5 @@ sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/theme
 sed -i 's/luci-theme-bootstrap/luci-theme-darkmatter/g' feeds/luci/collections/luci/Makefile
 sed -i 's/luci-theme-neobird/luci-theme-darkmatter/g' feeds/luci/collections/luci/Makefile
 
-
-# Modify default WiFi SSID
-sed -i "s/set wireless.default_radio\${devidx}.ssid=OpenWrt/set wireless.default_radio\${devidx}.ssid='RR-5G'/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
-# Modify default WiFi Encryption
-sed -i "s/set wireless.default_radio\${devidx}.encryption=none/set wireless.default_radio\${devidx}.encryption='psk2'/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
-# Modify default WiFi Key
-sed -i "/set wireless.default_radio\${devidx}.mode=ap/a\                        set wireless.default_radio\${devidx}.key='23456789DDop'" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 # 删除软件包
 rm -rf package/lean/luci-theme-argon
