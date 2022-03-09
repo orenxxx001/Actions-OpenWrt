@@ -33,8 +33,8 @@ sed -i 's/luci-theme-bootstrap/luci-theme-darkmatter/g' feeds/luci/collections/l
 sed -i 's/luci-theme-neobird/luci-theme-darkmatter/g' feeds/luci/collections/luci/Makefile
 
 # 更改SSID、密码
-sed -i "s/WPAPSK1=.*/WPAPSK1=23456789DDop/g" package/lean/mt/drivers/mt_wifi/files/mt7603.dat
-sed -i "s/WPAPSK1=.*/WPAPSK1=23456789DDop/g" package/lean/mt/drivers/mt_wifi/files/mt7615.dat
+sed -i "s/WPAPSK1=.*/WPAPSK1=23456789DDop#@！/g" package/lean/mt/drivers/mt_wifi/files/mt7603.dat
+sed -i "s/WPAPSK1=.*/WPAPSK1=23456789DDop#@！/g" package/lean/mt/drivers/mt_wifi/files/mt7615.dat
 sed -i 's/SSID1=.*/SSID1=RR-2G/g' package/lean/mt/drivers/mt_wifi/files/mt7603.dat
 sed -i 's/SSID1=.*/SSID1=RR-5G/g' package/lean/mt/drivers/mt_wifi/files/mt7615.dat
 sed -i 's/AuthMode=.*/AuthMode=WPAPSKWPA2PSK/g' package/lean/mt/drivers/mt_wifi/files/mt7603.dat
