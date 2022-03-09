@@ -35,12 +35,3 @@ sed -i '/set luci.main.mediaurlbase=\/luci-static\/neobird/d' feeds/luci/themes/
 # sed -i 's/更改前的信息/更改后的信息/g' ./要修改的文件的目录（可以用本地查看）
 sed -i 's/luci-theme-bootstrap/luci-theme-darkmatter/g' feeds/luci/collections/luci/Makefile
 sed -i 's/luci-theme-neobird/luci-theme-darkmatter/g' feeds/luci/collections/luci/Makefile
-
-
-sed -i 'exit/d' >>./package/lean/default-settings/files/zzz-default-settings
-echo 'sed -i "s/WPAPSK1=.*/WPAPSK1=23456789DDop/g" /etc/wireless/mt7615/mt7615.1.dat'  >>./package/lean/default-settings/files/zzz-default-settings
-echo 'sed -i "s/WPAPSK1=.*/WPAPSK1=23456789DDop/g" /etc/wireless/mt7615/mt7615.2.dat'  >>./package/lean/default-settings/files/zzz-default-settings
-echo 'sed -i 's/SSID1=.*/SSID1=RR-2G/g' /etc/wireless/mt7615/mt7615.1.dat'   >>./package/lean/default-settings/files/zzz-default-settings
-echo 'sed -i 's/SSID1=.*/SSID1=RR-5G/g' /etc/wireless/mt7615/mt7615.2.dat'  >>./package/lean/default-settings/files/zzz-default-settings
-echo 'exit ' >>./package/lean/default-settings/files/zzz-default-settings
-
