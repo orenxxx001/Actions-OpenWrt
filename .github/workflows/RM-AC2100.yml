@@ -61,7 +61,7 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
-    - name: 载入自定义数据源
+    - name: 载入自定义数据源feeds.conf.default 和 diy1
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
@@ -74,7 +74,13 @@ jobs:
     - name: 安装数据源
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: 载入定义配置（diy-part1、2）
+    - name: 载入定义配置 - wifi
+      env:
+        WIFI_FILE: 'mac80211.sh'
+      run: |
+        [ -e $WIFI_FILE ] && mv $WIFI_FILE openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
+        
+    - name: 载入定义配置（diy-part2）
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
