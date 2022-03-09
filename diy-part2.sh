@@ -24,6 +24,9 @@ sed -i '/uci commit system/i\uci set system.@system[0].hostname='XinV-2.0'' pack
 rm -rf package/lean/luci-theme-argon
 rm -rf package/lean/luci-theme-bootstrap
 
+# 添加主题
+git clone darkmatter git://github.com/apollo-ng/luci-theme-darkmatter.git package/lean/luci-theme-darkmatter
+
 # 取消bootstrap为默认主题：
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/neobird/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-neobird
