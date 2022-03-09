@@ -13,16 +13,3 @@ sed -i 's/192.168.1.1/192.168.88.8/g' package/base-files/files/bin/config_genera
 
 # 修改主机名，把XinV-2.0修改你喜欢的就行（不能纯数字或者使用中文）
 sed -i '/set system.@system[-1].hostname='OpenWrt'/i\set system.@system[-1].hostname='XinV-2.0'' package/base-files/files/bin/config_generate
-
-# 删除自定义源默认的 argon、bootstrap 主题
-rm -rf package/lean/luci-theme-argon
-rm -rf package/lean/luci-theme-bootstrap
-
-# 添加主题
-git clone darkmatter https://github.com/apollo-ng/luci-theme-darkmatter.git package/luci-theme-darkmatter
-git clone neobird https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
-
-# 替换默认主题为 luci-theme-darkmatter
-# sed -i 's/更改前的信息/更改后的信息/g' ./要修改的文件的目录（可以用本地查看）
-sed -i 's/luci-theme-bootstrap/luci-theme-darkmatter/g' feeds/luci/collections/luci/Makefile
-sed -i 's/luci-theme-neobird/luci-theme-darkmatter/g' feeds/luci/collections/luci/Makefile
