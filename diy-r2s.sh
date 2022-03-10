@@ -17,3 +17,7 @@ sed -i 's/OpenWrt/XinV-2.0/g' package/base-files/files/bin/config_generate
 
 # Modify the version number版本号里显示一个自己的名字（AutoBuild $(TZ=UTC-8 date "+%Y.%m.%d") @ 这些都是后增加的）---》可用
 sed -i 's/OpenWrt /Build $(TZ=UTC-8 date "+%Y.%m.%d") @ XinV-2.0 /g' package/lean/default-settings/files/zzz-default-settings
+
+# 替换默认主题为 luci-theme-darkmatter
+sed -i 's/luci-theme-bootstrap/luci-theme-darkmatter/g' feeds/luci/collections/luci/Makefile
+sed -i 's/luci-theme-argon/luci-theme-darkmatter/g' feeds/luci/collections/luci/Makefile
