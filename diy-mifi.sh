@@ -16,15 +16,4 @@ sed -i '/set system.@system[-1].hostname='OpenWrt'/i\set system.@system[-1].host
 
 # 替换默认主题为 luci-theme-darkmatter
 sed -i 's/luci-theme-bootstrap/luci-theme-darkmatter/g' feeds/luci/collections/luci/Makefile
-
-
-wifi_name='RR'
-wifi_encryption='psk2'
-wifi_password='23456789DDop'
-
-echo "修改wifi名称"
-sed -i "s/OpenWrt/$wifi_name/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
-echo "修改wifi加密方式"
-sed -i "s/none/$wifi_encryption/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
-echo "修改wifi加密密码"
-sed -i '/set wireless.default_radio${devidx}.encryption=none/aset wireless.default_radio${devidx}.key=$wifi_password' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/luci-theme-argon/luci-theme-darkmatter/g' feeds/luci/collections/luci/Makefile
