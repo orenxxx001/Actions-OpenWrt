@@ -73,7 +73,16 @@ jobs:
 
     - name: 安装数据源
       run: cd openwrt && ./scripts/feeds install -a
-
+      
+    - name: 玄学re-run数据源
+      run: cd openwrt && ./scripts/feeds update -a
+      
+    - name: 安装数据源
+      run: cd openwrt && ./scripts/feeds install -a
+      
+    - name: 玄学re-run数据源
+      run: cd openwrt && ./scripts/feeds update -a
+      
     - name: 载入定义配置（diy-part2）
       run: |
         [ -e files ] && mv files openwrt/files
