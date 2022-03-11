@@ -21,3 +21,14 @@ sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 
 # Add luci-theme-darkmatter
 sed -i '$a src-git darkmatter https://github.com/apollo-ng/luci-theme-darkmatter.git' feeds.conf.default
+
+# 更改SSID、密码
+sed -i "s/WPAPSK1=.*/WPAPSK1=23456789DDop#@！/g" package/lean/mt/drivers/mt_wifi/files/mt7603.dat
+sed -i "s/WPAPSK1=.*/WPAPSK1=23456789DDop#@！/g" package/lean/mt/drivers/mt_wifi/files/mt7615.dat
+sed -i 's/SSID1=.*/SSID1=RR-2G/g' package/lean/mt/drivers/mt_wifi/files/mt7603.dat
+sed -i 's/SSID1=.*/SSID1=RR-5G/g' package/lean/mt/drivers/mt_wifi/files/mt7615.dat
+sed -i 's/AuthMode=.*/AuthMode=WPAPSKWPA2PSK/g' package/lean/mt/drivers/mt_wifi/files/mt7603.dat
+sed -i 's/AuthMode=.*/AuthMode=WPAPSKWPA2PSK/g' package/lean/mt/drivers/mt_wifi/files/mt7615.dat
+sed -i 's/EncrypType=.*/EncrypType=AES/g' package/lean/mt/drivers/mt_wifi/files/mt7603.dat
+sed -i 's/EncrypType=.*/EncrypType=AES/g' package/lean/mt/drivers/mt_wifi/files/mt7615.dat
+
